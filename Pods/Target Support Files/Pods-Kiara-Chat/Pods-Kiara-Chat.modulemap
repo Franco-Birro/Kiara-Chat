@@ -1,0 +1,6 @@
+framework module Pods_Kiara_Chat {
+  umbrella header "Pods-Kiara-Chat-umbrella.h"
+
+  export *
+  module * { export * }
+}

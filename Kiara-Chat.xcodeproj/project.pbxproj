@@ -7,21 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D7CF88822C958E600201B02 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7CF88722C958E600201B02 /* ChatViewModel.swift */; };
+		9DC28BB922C7FC0B008970FF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC28BB822C7FC0B008970FF /* Message.swift */; };
 		9DC7E4E622C7FAE800DB1BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7E4E522C7FAE800DB1BBA /* AppDelegate.swift */; };
-		9DC7E4E822C7FAE800DB1BBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7E4E722C7FAE800DB1BBA /* ViewController.swift */; };
+		9DC7E4E822C7FAE800DB1BBA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7E4E722C7FAE800DB1BBA /* ChatViewController.swift */; };
 		9DC7E4EB22C7FAE800DB1BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC7E4E922C7FAE800DB1BBA /* Main.storyboard */; };
 		9DC7E4ED22C7FAE900DB1BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DC7E4EC22C7FAE900DB1BBA /* Assets.xcassets */; };
 		9DC7E4F022C7FAEA00DB1BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC7E4EE22C7FAEA00DB1BBA /* LaunchScreen.storyboard */; };
+		E89BA0B63793BC928006702C /* Pods_Kiara_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DA958A0C22D4C15F3B778E /* Pods_Kiara_Chat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42DA958A0C22D4C15F3B778E /* Pods_Kiara_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kiara_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D7CF88722C958E600201B02 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		9DC28BB822C7FC0B008970FF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9DC7E4E222C7FAE800DB1BBA /* Kiara-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kiara-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC7E4E522C7FAE800DB1BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9DC7E4E722C7FAE800DB1BBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DC7E4E722C7FAE800DB1BBA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		9DC7E4EA22C7FAE800DB1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DC7E4EC22C7FAE900DB1BBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DC7E4EF22C7FAEA00DB1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DC7E4F122C7FAEA00DB1BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B15121AE8F5CBCB83A3FAA2A /* Pods-Kiara-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiara-Chat.release.xcconfig"; path = "Target Support Files/Pods-Kiara-Chat/Pods-Kiara-Chat.release.xcconfig"; sourceTree = "<group>"; };
+		BD7A38D62F40235B36BEB1AC /* Pods-Kiara-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kiara-Chat.debug.xcconfig"; path = "Target Support Files/Pods-Kiara-Chat/Pods-Kiara-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E89BA0B63793BC928006702C /* Pods_Kiara_Chat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54EC1441B2B97C8FBF6D5BA6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD7A38D62F40235B36BEB1AC /* Pods-Kiara-Chat.debug.xcconfig */,
+				B15121AE8F5CBCB83A3FAA2A /* Pods-Kiara-Chat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9DC7E4D922C7FAE800DB1BBA = {
 			isa = PBXGroup;
 			children = (
 				9DC7E4E422C7FAE800DB1BBA /* Kiara-Chat */,
 				9DC7E4E322C7FAE800DB1BBA /* Products */,
+				54EC1441B2B97C8FBF6D5BA6 /* Pods */,
+				C8058087B9146B97FA3D217D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +75,23 @@
 			isa = PBXGroup;
 			children = (
 				9DC7E4E522C7FAE800DB1BBA /* AppDelegate.swift */,
-				9DC7E4E722C7FAE800DB1BBA /* ViewController.swift */,
+				9DC7E4E722C7FAE800DB1BBA /* ChatViewController.swift */,
 				9DC7E4E922C7FAE800DB1BBA /* Main.storyboard */,
 				9DC7E4EC22C7FAE900DB1BBA /* Assets.xcassets */,
 				9DC7E4EE22C7FAEA00DB1BBA /* LaunchScreen.storyboard */,
 				9DC7E4F122C7FAEA00DB1BBA /* Info.plist */,
+				9DC28BB822C7FC0B008970FF /* Message.swift */,
+				9D7CF88722C958E600201B02 /* ChatViewModel.swift */,
 			);
 			path = "Kiara-Chat";
+			sourceTree = "<group>";
+		};
+		C8058087B9146B97FA3D217D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42DA958A0C22D4C15F3B778E /* Pods_Kiara_Chat.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DC7E4F422C7FAEA00DB1BBA /* Build configuration list for PBXNativeTarget "Kiara-Chat" */;
 			buildPhases = (
+				996D8B16F3EA39CDA5BDCD2B /* [CP] Check Pods Manifest.lock */,
 				9DC7E4DE22C7FAE800DB1BBA /* Sources */,
 				9DC7E4DF22C7FAE800DB1BBA /* Frameworks */,
 				9DC7E4E022C7FAE800DB1BBA /* Resources */,
+				9200A9B0FBFEE84D021E7714 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +162,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9200A9B0FBFEE84D021E7714 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kiara-Chat/Pods-Kiara-Chat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InputBarAccessoryView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kiara-Chat/Pods-Kiara-Chat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		996D8B16F3EA39CDA5BDCD2B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kiara-Chat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9DC7E4DE22C7FAE800DB1BBA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DC7E4E822C7FAE800DB1BBA /* ViewController.swift in Sources */,
+				9DC28BB922C7FC0B008970FF /* Message.swift in Sources */,
+				9DC7E4E822C7FAE800DB1BBA /* ChatViewController.swift in Sources */,
+				9D7CF88822C958E600201B02 /* ChatViewModel.swift in Sources */,
 				9DC7E4E622C7FAE800DB1BBA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +363,7 @@
 		};
 		9DC7E4F522C7FAEA00DB1BBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD7A38D62F40235B36BEB1AC /* Pods-Kiara-Chat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +381,7 @@
 		};
 		9DC7E4F622C7FAEA00DB1BBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B15121AE8F5CBCB83A3FAA2A /* Pods-Kiara-Chat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

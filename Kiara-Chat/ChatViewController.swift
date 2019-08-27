@@ -14,14 +14,55 @@ class ChatViewController: MessagesViewController {
     
     var messages: [Message] = []
     var member: Member!
+    var watson: Member!
+    //let service: Service?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         member = Member(name: "bluemoon", color: .blue)
+        watson = Member(name: "Watson", color: .orange)
+
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messageInputBar.delegate = self
-        messagesCollectionView.messagesDisplayDelegate = self    }
+        messagesCollectionView.messagesDisplayDelegate = self
+        
+    }
+    
+    func sendMessage(mesage: String) {
+    
+        let parameters = ["mesage": mesage]
+        
+        guard let url = URL(string: "https://assistantinsigths.mybluemix.net/mesage") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        request.httpBody = httpBody
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let response = response {
+                
+                let newMessage = Message(
+                    member: self.watson,
+                    text: String("Ok"),
+                    messageId: UUID().uuidString)
+
+                
+                self.messages.append(newMessage)
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                } catch {
+                    print(error)
+                }
+            }
+            
+            }.resume()
+    }
 }
 
 extension ChatViewController: MessagesDataSource {
@@ -82,6 +123,9 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             member: member,
             text: text,
             messageId: UUID().uuidString)
+        
+        self.sendMessage(mesage: text)
+        
         
         messages.append(newMessage)
         inputBar.inputTextView.text = ""

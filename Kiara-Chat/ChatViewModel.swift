@@ -8,10 +8,9 @@
 
 import Foundation
 
+class Service {
 
-class service {
-
-func sendMessage() {
+    func sendMessage(mesage: String) {
         let url = URL(string: "assistantinsigths.mybluemix.net/mesage")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

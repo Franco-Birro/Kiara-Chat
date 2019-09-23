@@ -19,8 +19,8 @@ class ChatViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        member = Member(name: "bluemoon", color: .blue)
-        watson = Member(name: "Watson", color: .orange)
+        member = Member(name: "User", color: .blue)
+        watson = Member(name: "Kiara", color: .orange)
 
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -28,6 +28,19 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesDisplayDelegate = self
         
     }
+    
+//    func parseConversationResponse(_ data: Data?) -> (String, [String: Any?])? {
+//        if let dict = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any?],
+//            let output = dict?["output"] as? [String: Any?],
+//            let answerArray = output["text"] as? [String],
+//            let context = dict?["context"] as? [String: Any?]{
+//
+//            let action = dict?["action"] as? String
+//
+//        }
+//        return nil
+//    }
+    
     
     func sendMessage(mesage: String) {
     
@@ -42,26 +55,31 @@ class ChatViewController: MessagesViewController {
         
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
-            if let response = response {
-                
-                let newMessage = Message(
-                    member: self.watson,
-                    text: String("Ok"),
-                    messageId: UUID().uuidString)
-
-                
-                self.messages.append(newMessage)
-            }
-            if let data = data {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
-                } catch {
-                    print(error)
+           
+        if let data = data {
+            do {
+                if let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any?] {
+                    if let output = dict["output"] as? [String: Any?] {
+                        if let generic = output["generic"] as? [String: Any?] {
+                            print(output)
+                            let newMessage = Message(
+                                member: self.watson,
+                                text: String("Olá, como vai? eu sou uma assistente virtual criada para traçar um perfil de sua personalidade baseada em nossa conversa, podemos começar?"),
+                                messageId: UUID().uuidString)
+                            
+                            self.messages.append(newMessage)
+                        }
+                    }
                 }
-            }
+               
             
-            }.resume()
+                    
+            } catch {
+                print(error)
+            }
+        }
+            
+        }.resume()
     }
 }
 

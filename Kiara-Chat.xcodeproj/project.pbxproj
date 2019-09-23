@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9680082D23380D610043E11E /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9680082C23380D610043E11E /* JSONDecodable.swift */; };
+		9680082F23380DB00043E11E /* messageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9680082E23380DB00043E11E /* messageModel.swift */; };
 		9D7CF88822C958E600201B02 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7CF88722C958E600201B02 /* ChatViewModel.swift */; };
 		9DC28BB922C7FC0B008970FF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC28BB822C7FC0B008970FF /* Message.swift */; };
 		9DC7E4E622C7FAE800DB1BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7E4E522C7FAE800DB1BBA /* AppDelegate.swift */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		42DA958A0C22D4C15F3B778E /* Pods_Kiara_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kiara_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9680082C23380D610043E11E /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		9680082E23380DB00043E11E /* messageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageModel.swift; sourceTree = "<group>"; };
 		9D7CF88722C958E600201B02 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		9DC28BB822C7FC0B008970FF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9DC7E4E222C7FAE800DB1BBA /* Kiara-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kiara-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +86,8 @@
 				9DC7E4F122C7FAEA00DB1BBA /* Info.plist */,
 				9DC28BB822C7FC0B008970FF /* Message.swift */,
 				9D7CF88722C958E600201B02 /* ChatViewModel.swift */,
+				9680082C23380D610043E11E /* JSONDecodable.swift */,
+				9680082E23380DB00043E11E /* messageModel.swift */,
 			);
 			path = "Kiara-Chat";
 			sourceTree = "<group>";
@@ -169,18 +175,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kiara-Chat/Pods-Kiara-Chat-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework",
-				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Kiara-Chat/Pods-Kiara-Chat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InputBarAccessoryView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Kiara-Chat/Pods-Kiara-Chat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -217,6 +216,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC28BB922C7FC0B008970FF /* Message.swift in Sources */,
+				9680082F23380DB00043E11E /* messageModel.swift in Sources */,
+				9680082D23380D610043E11E /* JSONDecodable.swift in Sources */,
 				9DC7E4E822C7FAE800DB1BBA /* ChatViewController.swift in Sources */,
 				9D7CF88822C958E600201B02 /* ChatViewModel.swift in Sources */,
 				9DC7E4E622C7FAE800DB1BBA /* AppDelegate.swift in Sources */,

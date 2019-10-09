@@ -10,6 +10,7 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView
 
+
 class ChatViewController: MessagesViewController {
     
     var messages: [Message] = []
@@ -26,24 +27,9 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messageInputBar.delegate = self
         messagesCollectionView.messagesDisplayDelegate = self
-        
     }
     
-//    func parseConversationResponse(_ data: Data?) -> (String, [String: Any?])? {
-//        if let dict = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any?],
-//            let output = dict?["output"] as? [String: Any?],
-//            let answerArray = output["text"] as? [String],
-//            let context = dict?["context"] as? [String: Any?]{
-//
-//            let action = dict?["action"] as? String
-//
-//        }
-//        return nil
-//    }
-    
-    
     func sendMessage(mesage: String) {
-    
         let parameters = ["mesage": mesage]
         
         guard let url = URL(string: "https://assistantinsigths.mybluemix.net/mesage") else { return }
@@ -58,28 +44,27 @@ class ChatViewController: MessagesViewController {
            
         if let data = data {
             do {
-                if let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any?] {
-                    if let output = dict["output"] as? [String: Any?] {
-                        if let generic = output["generic"] as? [String: Any?] {
-                            print(output)
-                            let newMessage = Message(
-                                member: self.watson,
-                                text: String("Olá, como vai? eu sou uma assistente virtual criada para traçar um perfil de sua personalidade baseada em nossa conversa, podemos começar?"),
-                                messageId: UUID().uuidString)
-                            
-                            self.messages.append(newMessage)
-                        }
+                if let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any?],
+                    let output = dict?["output"] as? [String: Any?],
+                    let answerArray = output["generic"] as?  [[String: String?]]{
+                    
+                    let text = answerArray[0]["text"]
+                    self.printMessage(mesage: text!!)
                     }
                 }
-               
-            
-                    
-            } catch {
-                print(error)
             }
-        }
-            
-        }.resume()
+            }.resume()
+    }
+   
+    func printMessage(mesage: String){
+       let newMessage = Message(
+        member: self.watson,
+        text: mesage,
+        messageId: UUID().uuidString)
+        messages.append(newMessage)
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadData()
+            self.messagesCollectionView.scrollToBottom(animated: true)        }
     }
 }
 
@@ -142,8 +127,9 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             text: text,
             messageId: UUID().uuidString)
         
-        self.sendMessage(mesage: text)
         
+        self.sendMessage(mesage: text)
+
         
         messages.append(newMessage)
         inputBar.inputTextView.text = ""

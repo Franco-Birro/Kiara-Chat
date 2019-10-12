@@ -17,20 +17,24 @@ class ChatViewController: MessagesViewController {
     var member: Member!
     var watson: Member!
     //let service: Service?
+    let user = UUID().uuidString
+    var session_id: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         member = Member(name: "User", color: .blue)
         watson = Member(name: "Kiara", color: .orange)
-
+        
+        self.sendMessage(message: "", user: self.user)
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messageInputBar.delegate = self
         messagesCollectionView.messagesDisplayDelegate = self
     }
     
-    func sendMessage(mesage: String) {
-        let parameters = ["mesage": mesage]
+    func sendMessage(message: String, user: String) {
+       // let parameters = ["message": mesage]
+        let parameters =  ["input": ["text": message], "user": user, "session_id": self.session_id] as [String : Any]
         
         guard let url = URL(string: "https://assistantinsigths.mybluemix.net/mesage") else { return }
         var request = URLRequest(url: url)
@@ -46,8 +50,10 @@ class ChatViewController: MessagesViewController {
             do {
                 if let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any?],
                     let output = dict?["output"] as? [String: Any?],
+                    let session = dict?["session_id"] as? String,
                     let answerArray = output["generic"] as?  [[String: String?]]{
                     
+                    self.session_id = session
                     let text = answerArray[0]["text"]
                     self.printMessage(mesage: text!!)
                     }
@@ -128,7 +134,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             messageId: UUID().uuidString)
         
         
-        self.sendMessage(mesage: text)
+        self.sendMessage(message: text, user: self.user)
 
         
         messages.append(newMessage)

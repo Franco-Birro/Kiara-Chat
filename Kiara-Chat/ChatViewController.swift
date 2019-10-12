@@ -130,11 +130,11 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         
         let newMessage = Message(
             member: member,
-            text: text,
+            text: text.trimmingCharacters(in: .whitespacesAndNewlines),
             messageId: UUID().uuidString)
         
         
-        self.sendMessage(message: text, user: self.user)
+        self.sendMessage(message: text.trimmingCharacters(in: .whitespacesAndNewlines), user: self.user)
 
         
         messages.append(newMessage)
@@ -153,3 +153,5 @@ extension ChatViewController: MessagesLayoutDelegate {
         return 0
     }
 }
+
+

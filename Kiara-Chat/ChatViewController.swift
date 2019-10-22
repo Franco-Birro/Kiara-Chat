@@ -16,10 +16,10 @@ class ChatViewController: MessagesViewController {
     var messages: [Message] = []
     var member: Member!
     var watson: Member!
-    //let service: Service?
+    
     let user = UUID().uuidString
     var session_id: String?
-    var text: String?
+    var text: String = ""
     var action: String?
     
     override func viewDidLoad() {
@@ -36,13 +36,13 @@ class ChatViewController: MessagesViewController {
     }
     
     func sendMessage(message: String, user: String) {
-       // let parameters = ["message": mesage]
+
         var parameters: [String: Any?]
         
-        if self.action == "EndText" {
-            parameters =  ["input": ["text": self.text], "user": user, "session_id": self.session_id ?? ""] as [String : Any]
+        if self.action == "endText" {
+            parameters =  ["input": ["text": self.text], "user": user, "session_id": self.session_id ?? "", "action": self.action ?? "endTex"] as [String : Any]
         }else {
-            parameters =  ["input": ["text": message], "user": user, "session_id": self.session_id ?? ""] as [String : Any]
+            parameters =  ["input": ["text": message], "user": user, "session_id": self.session_id ?? "", "action": self.action ?? "makeText"] as [String : Any]
 
         }
         
@@ -66,7 +66,10 @@ class ChatViewController: MessagesViewController {
                     if let user_defined = output["user_defined"] as? [String: Any?],
                         let action = user_defined["action"] as? String {
                         self.action = action
-                        self.text = message
+                        self.text += " " + message
+                        if self.action == "endText" {
+                            self.sendText()
+                        }
                     }
                     
                     self.session_id = session
@@ -79,6 +82,39 @@ class ChatViewController: MessagesViewController {
                 }
             }
             }.resume()
+    }
+    
+    func sendText(){
+        var parameters: [String: Any?]
+               
+        parameters =  ["input": ["text": self.text], "user": user, "session_id": self.session_id ?? "", "action": self.action ?? "endTex"] as [String : Any]
+              
+        
+        guard let url = URL(string: "https://assistantinsigths.mybluemix.net/mesage") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        request.httpBody = httpBody
+            
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+                  
+        if let data = data {
+            do {
+                if let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any?]{
+                            
+                    
+                    let test = 0
+//
+//                    for message in answerArray {
+//                        let text = message["text"]
+//                        self.printMessage(mesage: text!!)
+//                    }
+                }
+            }
+        }
+        }.resume()
     }
    
     func printMessage(mesage: String){

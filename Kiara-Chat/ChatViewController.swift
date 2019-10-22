@@ -19,6 +19,8 @@ class ChatViewController: MessagesViewController {
     //let service: Service?
     let user = UUID().uuidString
     var session_id: String?
+    var text: String?
+    var action: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +32,19 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messageInputBar.delegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        
     }
     
     func sendMessage(message: String, user: String) {
        // let parameters = ["message": mesage]
-        let parameters =  ["input": ["text": message], "user": user, "session_id": self.session_id] as [String : Any]
+        var parameters: [String: Any?]
+        
+        if self.action == "EndText" {
+            parameters =  ["input": ["text": self.text], "user": user, "session_id": self.session_id ?? ""] as [String : Any]
+        }else {
+            parameters =  ["input": ["text": message], "user": user, "session_id": self.session_id ?? ""] as [String : Any]
+
+        }
         
         guard let url = URL(string: "https://assistantinsigths.mybluemix.net/mesage") else { return }
         var request = URLRequest(url: url)
@@ -52,10 +62,19 @@ class ChatViewController: MessagesViewController {
                     let output = dict?["output"] as? [String: Any?],
                     let session = dict?["session_id"] as? String,
                     let answerArray = output["generic"] as?  [[String: String?]]{
+                     
+                    if let user_defined = output["user_defined"] as? [String: Any?],
+                        let action = user_defined["action"] as? String {
+                        self.action = action
+                        self.text = message
+                    }
                     
                     self.session_id = session
-                    let text = answerArray[0]["text"]
-                    self.printMessage(mesage: text!!)
+                    
+                        for message in answerArray {
+                            let text = message["text"]
+                            self.printMessage(mesage: text!!)
+                        }
                     }
                 }
             }
@@ -115,6 +134,7 @@ extension ChatViewController: MessagesDisplayDelegate {
         for message: MessageType,
         at indexPath: IndexPath,
         in messagesCollectionView: MessagesCollectionView) {
+        
         
         let message = messages[indexPath.section]
         let color = message.member.color
